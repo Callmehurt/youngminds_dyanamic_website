@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MuniTypeSeeder::class);
         $this->call(MunicipalitySeeder::class);
         $this->call(NavbarMenuTypeSeeder::class);
-//        $this->call(NavbarSeeder::class);
+        $this->call(NavbarSeeder::class);
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
