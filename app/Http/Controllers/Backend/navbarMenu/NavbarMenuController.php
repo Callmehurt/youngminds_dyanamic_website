@@ -104,15 +104,22 @@ class NavbarMenuController extends BaseController
             }
 
             $menuName = $request->input('menu_name');
-            $moduleUrl = $request->input('module_url');
-            $siteUrl = $request->input('site_url');
             $menuType = $request->input('menu_type_id');
-
             $checkMenuType = $this->navbarMenuTypeRepository->findById($menuType);
             if($checkMenuType->menu_type_name == "Page Menu"){
                 $slug = $request->input('page_slug');
             }else{
                 $slug = "";
+            }
+            if($checkMenuType->menu_type_name == "Module Menu"){
+                $moduleUrl = $request->input('module_url');
+            }else{
+                $moduleUrl = "";
+            }
+            if($checkMenuType->menu_type_name == "URL Menu"){
+                $siteUrl = $request->input('site_url');
+            }else{
+                $siteUrl = "";
             }
 
             $displayOrder = $request->input('display_order');

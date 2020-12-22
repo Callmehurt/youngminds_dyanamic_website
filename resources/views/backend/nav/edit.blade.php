@@ -7,7 +7,7 @@
 
         {!! Form::model($edits,['method'=>'PUT','route'=>['navbar.update', $edits->id]]) !!}
 
-        <div class="form-group {{ ($errors->has('parent_id'))?'has-error':'' }}">
+        <div class="form-group {{ ($errors->has('parent_id'))?'has-error':'' }}" id="parentSelect">
             <label>Parent Menu</label>
             {{Form::select('parent_id',$menusParentList->pluck('menu_name','id'),Request::get('parent_id'),['class'=>'form-control select2','style'=>'width:100%;','id'=>'parent_id','placeholder'=>
             'Select Parent Name'])}}
@@ -41,7 +41,7 @@
             </div>
         @endif
 
-            <div class="form-group {{ ($errors->has('site_url'))?'has-error':'' }}">
+            <div class="form-group {{ ($errors->has('site_url'))?'has-error':'' }}" id="siteUrl">
             <label>Site URL
             </label>
         {!! Form::text('site_url',null,['class'=>'form-control','name' => 'site_url']) !!}
@@ -49,7 +49,7 @@
         <!-- /.input group -->
         </div>
 
-        <div class="form-group {{ ($errors->has('module_url'))?'has-error':'' }}">
+        <div class="form-group {{ ($errors->has('module_url'))?'has-error':'' }}" id="moduleUrl">
             <label>Module URL
             </label>
         {!! Form::text('module_url',null,['class'=>'form-control','name' => 'module_url']) !!}
@@ -86,11 +86,23 @@
 <script>
     const menuTypeDropdown = document.getElementById("menuTypeDropdown");
     const pageDropdown = document.getElementById("pageDropdownBx");
+    const siteUrl = document.getElementById("siteUrl");
+    const moduleUrl = document.getElementById("moduleUrl");
     const check = menuTypeDropdown.options[menuTypeDropdown.selectedIndex].text;
     if(check == "Page Menu"){
         pageDropdown.classList.remove('hidden');
     }else {
         pageDropdown.classList.add('hidden');
+    }
+    if(check == "URL Menu"){
+        siteUrl.classList.remove('hidden');
+    }else {
+        siteUrl.classList.add('hidden');
+    }
+    if(check == "Module Menu"){
+        moduleUrl.classList.remove('hidden');
+    }else {
+        moduleUrl.classList.add('hidden');
     }
     menuTypeDropdown.addEventListener('change', function () {
         const value = menuTypeDropdown.options[menuTypeDropdown.selectedIndex].text;
@@ -98,6 +110,16 @@
             pageDropdown.classList.remove('hidden');
         }else {
             pageDropdown.classList.add('hidden');
+        }
+        if(value == "URL Menu"){
+            siteUrl.classList.remove('hidden');
+        }else {
+            siteUrl.classList.add('hidden');
+        }
+        if(value == "Module Menu"){
+            moduleUrl.classList.remove('hidden');
+        }else {
+            moduleUrl.classList.add('hidden');
         }
     })
 

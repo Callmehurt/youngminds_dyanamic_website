@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\backend\news\NewsController;
-use App\Http\Controllers\backend\notice\NoticeController;
-use App\Http\Controllers\backend\event\EventController;
-use App\Http\Controllers\backend\Download\DownloadController;
+use App\Http\Controllers\Backend\news\NewsController;
+use App\Http\Controllers\Backend\notice\NoticeController;
+use App\Http\Controllers\Backend\event\EventController;
+use App\Http\Controllers\Backend\Download\DownloadController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Backend\navbarMenuType\NavbarMenuTypeController;
 use App\Http\Controllers\Backend\navbarMenu\NavbarMenuController;
@@ -12,6 +12,13 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\Backend\page\PageController;
 use App\Http\Controllers\Backend\carousel\CarouselController;
 
+//Frontend Imports
+use App\Http\Controllers\Frontend\News\FrontendNewsController;
+use App\Http\Controllers\Frontend\Downloads\FrontendDownloadsController;
+use App\Http\Controllers\Frontend\Events\FrontendEventsController;
+use App\Http\Controllers\Frontend\Notice\FrontendNoticeController;
+use App\Http\Controllers\Frontend\Contact\FrontendContactController;
+
 
 Auth::routes();
 //Route::get('/', 'HomeController@index');
@@ -19,15 +26,15 @@ Auth::routes();
 
 //Frontend Routes
 Route::get('/', [FrontendController::class, 'index'])->name('frontend.home');
-Route::get('/contact', [FrontendController::class, 'contact'])->name('frontend.contact');
-Route::get('/view/news', [FrontendController::class, 'news'])->name('frontend.news');
-Route::get('/view/news/{news}', [FrontendController::class, 'getNews'])->name('frontend.getNews');
-Route::get('/view/events', [FrontendController::class, 'events'])->name('frontend.events');
-Route::get('/view/notice', [FrontendController::class, 'notices'])->name('frontend.notices');
-Route::get('/view/notice/{notice}', [FrontendController::class, 'getNotice'])->name('frontend.getNotice');
-Route::get('/view/notice/download/{notice}', [FrontendController::class, 'download_notice'])->name('frontend.notice.download');
-Route::get('/view/downloads', [FrontendController::class, 'downloads'])->name('frontend.downloads');
-Route::get('/download/{download}', [FrontendController::class, 'download_downloads'])->name('frontend.downloads.download');
+Route::get('/contact', [FrontendContactController::class, 'contact'])->name('frontend.contact');
+Route::get('/view/news', [FrontendNewsController::class, 'news'])->name('frontend.news');
+Route::get('/view/news/{news}', [FrontendNewsController::class, 'getNews'])->name('frontend.getNews');
+Route::get('/view/events', [FrontendEventsController::class, 'events'])->name('frontend.events');
+Route::get('/view/notice', [FrontendNoticeController::class, 'notices'])->name('frontend.notices');
+Route::get('/view/notice/{notice}', [FrontendNoticeController::class, 'getNotice'])->name('frontend.getNotice');
+Route::get('/view/notice/download/{notice}', [FrontendNoticeController::class, 'download_notice'])->name('frontend.notice.download');
+Route::get('/view/downloads', [FrontendDownloadsController::class, 'downloads'])->name('frontend.downloads');
+Route::get('/download/{download}', [FrontendDownloadsController::class, 'download_downloads'])->name('frontend.downloads.download');
 
 
 //single page

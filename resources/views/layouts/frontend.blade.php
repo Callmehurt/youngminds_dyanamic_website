@@ -33,11 +33,23 @@
                                 @foreach($firstLevelMenus as $menu)
                                     @if($menu->parent_id==0)
                                         <?php   $secondLevelMenus = App\Models\NavbarMenu::getMenu($id = $menu->id); ?>
-                                        <li><a href="{{$menu->module_url}}">{{$menu->menu_name}} @if(count($secondLevelMenus)>0)<i class="fa fa-caret-down" style="margin-left: 5px"></i>@endif</a>
+                                        @if(empty($menu->module_url))
+                                                <li><a href="{{$menu->site_url}}">{{$menu->menu_name}} @if(count($secondLevelMenus)>0)<i class="fa fa-caret-down" style="margin-left: 5px"></i>@endif</a>
+                                            @else
+                                                <li><a href="{{$menu->module_url}}">{{$menu->menu_name}} @if(count($secondLevelMenus)>0)<i class="fa fa-caret-down" style="margin-left: 5px"></i>@endif</a>
+                                        @endif
                                             @if(count($secondLevelMenus) > 0)
                                                 <ul class="second-menu">
                                                     @foreach($secondLevelMenus as $secondMenu)
-                                                    <li><a href="{{route('frontend.getSinglePage',[$secondMenu->slug])}}">{{$secondMenu->menu_name}}</a></li>
+                                                        @if(empty($secondMenu->slug))
+                                                            @if(empty($secondMenu->module_url))
+                                                            <li><a href="{{$secondMenu->site_url}}" target="_blank">{{$secondMenu->menu_name}}</a></li>
+                                                            @else
+                                                            <li><a href="{{$secondMenu->module_url}}">{{$secondMenu->menu_name}}</a></li>
+                                                            @endif
+                                                            @else
+                                                            <li><a href="{{route('frontend.getSinglePage',[$secondMenu->slug])}}">{{$secondMenu->menu_name}}</a></li>
+                                                        @endif
                                                         @endforeach
                                                 </ul>
                                                 @endif

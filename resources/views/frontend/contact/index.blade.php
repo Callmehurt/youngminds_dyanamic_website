@@ -26,17 +26,17 @@
                     <div class="col-lg-11 col-md-12 col-xs-12 col-sm-12">
                         <div class="contact-div shadow-sm">
                         <div class="contact-side-img pl-5">
-                            <ul style="margin-top: calc(100% - 45%);">
+                            <ul style="margin-top: calc(100% - 45%);list-style: none">
                                 <li class="bold-text"><i class="fa fa-map-marker" aria-hidden="true" style="padding-right: 1.5rem;"></i> Address</li>
-                                <li style="padding-left: 3.3rem;">Mada Center 8th floor, 379 Hudson St, New York, NY 10018 US</li>
+                                <li style="padding-left: 3.3rem;">Kathmandu, Nepal</li>
                             </ul>
 
-                            <ul style="margin-top: 2rem;">
+                            <ul style="margin-top: 2rem;list-style: none">
                                 <li class="bold-text"><i class="fa fa-phone" aria-hidden="true" style="padding-right: 1.5rem;"></i> Lets Talk</li>
                                 <li style="padding-left: 3.4rem;color: #00AD4F;">+1 800 1236879</li>
                             </ul>
 
-                            <ul style="margin-top: 2rem;">
+                            <ul style="margin-top: 2rem;list-style: none">
                                 <li class="bold-text"><i class="fa fa-envelope" aria-hidden="true" style="padding-right: 1.5rem;"></i> General Support</li>
                                 <li style="padding-left: 3.5rem;color: #00AD4F;">contact@example.com</li>
                             </ul>
